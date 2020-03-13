@@ -16,7 +16,7 @@ public class MaxHeap<T extends Comparable<T>> implements IHeap<T> {
     }
 
     MaxHeap() {
-        elements = new INode[20];
+        elements = new INode[MAX];
     }
 
     MaxHeap(int max) {
@@ -134,17 +134,32 @@ public class MaxHeap<T extends Comparable<T>> implements IHeap<T> {
         first.setValue(second.getValue());
         second.setValue(tempValue);
     }
+    public void sort(){
+        int maxSize = heapSize ;
+        ArrayList<T> sorted = new ArrayList<>() ;
+
+        for(int i = heapSize  ; i >=1 ;i--) {
+            sorted.add(extract());
+        }
+        int x = 0 ;
+        for(int i = 1 ; i<= sorted.size() ; i++ ) {
+            elements[i] = new Node(this , i , sorted.get(sorted.size()  - i )) ;
+        }
+        heapSize = maxSize ;
+
+    }
 
     //========================================================================================
-//    public static void main(String[] args) {
-//        MaxHeap<Integer> heaph5a = new MaxHeap<>(100);
-//        ArrayList<Integer> sample = new ArrayList<>(Arrays.asList(10,9,7,6,5,4,3,2,1,0));
-//        heaph5a.build(sample);
-//        heaph5a.print();
-//
-//        heaph5a.print();
-//
-//    }
+    public static void main(String[] args) {
+        MaxHeap<Integer> heaph5a = new MaxHeap<>(100);
+        ArrayList<Integer> sample = new ArrayList<>(Arrays.asList(10,9,7,6,5,4,3,2,1,0));
+        heaph5a.build(sample);
+        heaph5a.sort();
+        heaph5a.print();
+
+        heaph5a.print();
+
+    }
 
 
 }

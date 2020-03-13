@@ -1,5 +1,4 @@
 package eg.edu.alexu.csd.filestructure.sort;
-
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -7,8 +6,10 @@ public class SortingTechnique<T extends Comparable<T>> implements ISort<T> {
     @Override
     public IHeap<T> heapSort(ArrayList<T> unordered) {
         if (unordered == null || unordered.size() == 0) return new MaxHeap<>(1);
-        IHeap<T> heap = new MaxHeap<>();
-        return null;
+        MaxHeap<T> heap = new MaxHeap<>();
+        heap.build(unordered);
+        heap.sort();
+        return heap;
     }
 
     @Override

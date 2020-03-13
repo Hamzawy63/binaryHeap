@@ -10,6 +10,7 @@ public class SortingTechnique<T extends Comparable<T>> implements ISort<T> {
 
     @Override
     public void sortSlow(ArrayList<T> unordered) {
+
         // bubble sort
     }
 

@@ -6,8 +6,8 @@ import java.util.Collection;
 import java.util.Iterator;
 
 public class MaxHeap<T extends Comparable<T>> implements IHeap<T> {
-    INode[] elements ;
-    int MAX = (int)2e7 ;
+    INode[] elements;
+    int MAX = (int) 2e7;
     int heapSize = 0;
 
     public INode get(int index) {
@@ -16,7 +16,7 @@ public class MaxHeap<T extends Comparable<T>> implements IHeap<T> {
     }
 
     MaxHeap() {
-        elements = new INode[MAX];
+        elements = new INode[20];
     }
 
     MaxHeap(int max) {
@@ -36,7 +36,7 @@ public class MaxHeap<T extends Comparable<T>> implements IHeap<T> {
 
     @Override
     public void heapify(INode<T> node) {
-        if(node == null ) return;
+        if (node == null) return;
         INode<T> largest = node;
         INode<T> left = node.getLeftChild();
         INode<T> right = node.getRightChild();
@@ -56,10 +56,10 @@ public class MaxHeap<T extends Comparable<T>> implements IHeap<T> {
 
     @Override
     public T extract() {
-        if(heapSize == 0 ) return  null ;
+        if (heapSize == 0) return null;
         INode<T> root = getRoot();
         INode<T> last = lastElement();
-        T value = last.getValue();
+        T value = root.getValue();
 
 
         /*Swap the value of the root with the last element in the heap*/
@@ -77,7 +77,7 @@ public class MaxHeap<T extends Comparable<T>> implements IHeap<T> {
 
     @Override
     public void insert(T element) {
-        if(element == null ) return;
+        if (element == null) return;
         heapSize++;
         elements[heapSize] = new Node(this, heapSize, element);
 
@@ -101,7 +101,7 @@ public class MaxHeap<T extends Comparable<T>> implements IHeap<T> {
 
     @Override
     public void build(Collection<T> unordered) {
-        if(unordered == null || unordered.size() == 0 ) return;
+        if (unordered == null || unordered.size() == 0) return;
         heapSize = unordered.size();
         int index = 1;
         for (Iterator<T> iterator = unordered.iterator(); iterator.hasNext(); ) {
@@ -110,7 +110,6 @@ public class MaxHeap<T extends Comparable<T>> implements IHeap<T> {
         }
         buildMaxHeap();
     }
-
     /*Helping methods */
 
     private INode<T> lastElement() {
@@ -137,18 +136,15 @@ public class MaxHeap<T extends Comparable<T>> implements IHeap<T> {
     }
 
     //========================================================================================
-    public static void main(String[] args) {
-        MaxHeap<Integer> heaph5a = new MaxHeap<>(100);
-        ArrayList<Integer> sample = new ArrayList<>(Arrays.asList(1, 2, 3, 4,5,6,7,8,9));
-        heaph5a.build(sample);
-        INode<Integer> root = heaph5a.getRoot();
-        while(root != null ) {
-            System.out.print(root.getValue() + " ");
-        }
-        System.out.println();
-        heaph5a.print();
-
-    }
+//    public static void main(String[] args) {
+//        MaxHeap<Integer> heaph5a = new MaxHeap<>(100);
+//        ArrayList<Integer> sample = new ArrayList<>(Arrays.asList(10,9,7,6,5,4,3,2,1,0));
+//        heaph5a.build(sample);
+//        heaph5a.print();
+//
+//        heaph5a.print();
+//
+//    }
 
 
 }

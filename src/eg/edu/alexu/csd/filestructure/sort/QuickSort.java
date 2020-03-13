@@ -8,15 +8,19 @@ public class QuickSort<E extends Comparable<E>>{
      * Implementation of quick sort using the middle  element as the pivot
      */
     private ArrayList<E> arr ;
-    private int n;
+    private int size;
 
     QuickSort(ArrayList<E> arr) {
+
         this.arr = arr;
-        this.n = arr.size();
+        this.size = arr.size();
+
     }
+
     public void sort() {
-        quickSort(0, n - 1);
+        quickSort(0, size - 1);
     }
+
     private void quickSort(int l, int r) {
         if (l < r) {
             int pivotIndex = partition(l, r);
@@ -34,7 +38,7 @@ public class QuickSort<E extends Comparable<E>>{
         int i = l - 1;
         for (int j = l; j < r ; j++) {
             if (arr.get(j).compareTo(pivot) < 0 ) {
-                i++;
+                i ++;
                 swap(i , j );
             }
         }
@@ -44,8 +48,9 @@ public class QuickSort<E extends Comparable<E>>{
     private void swap(int i, int j) {
         Collections.swap(arr , i , j);
     }
+    
     public void print(){
-        for(int i = 0 ; i < n ; i++) {
+        for(int i = 0 ; i < size ; i++) {
             System.out.print(arr.get(i).toString()+ " ");
         }
         System.out.println();

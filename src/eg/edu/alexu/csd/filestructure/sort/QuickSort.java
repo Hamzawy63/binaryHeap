@@ -48,7 +48,7 @@ public class QuickSort<E extends Comparable<E>>{
     private void swap(int i, int j) {
         Collections.swap(arr , i , j);
     }
-    
+
     public void print(){
         for(int i = 0 ; i < size ; i++) {
             System.out.print(arr.get(i).toString()+ " ");
